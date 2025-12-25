@@ -1,0 +1,25 @@
+# =========================
+# Build artifacts
+# =========================
+target/
+
+# =========================
+# IDE / OS files
+# =========================
+.idea/
+.vscode/
+*.iml
+.DS_Store
+
+# =========================
+# Logs & artifacts
+# =========================
+artifacts/
+logs/
+
+# =========================
+# Documentation drafts / generated docs
+# =========================
+doc/
+
+AGENTS.md

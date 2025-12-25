@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Automation Suite" parallel="tests" thread-count="2">
+  <test name="UI Tests">
+    <packages>
+      <package name="com.acme.tests.ui"/>
+    </packages>
+  </test>
+
+  <test name="API Tests">
+    <packages>
+      <package name="com.acme.tests.api"/>
+    </packages>
+  </test>
+</suite>
