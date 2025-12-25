@@ -1,5 +1,6 @@
 package com.acme.framework.pages;
 
+import com.acme.framework.components.Header;
 import com.acme.framework.config.Config;
 import com.acme.framework.core.BasePage;
 import com.acme.framework.drivers.DriverManager;
@@ -7,7 +8,9 @@ import org.openqa.selenium.By;
 
 public class HomePage extends BasePage {
 
-    private static final By HEADER = By.tagName("h1");
+//    private static final By HEADER = By.tagName("h1");
+    private final Header header = new Header();
+
 
     public HomePage open() {
         open(Config.baseUrl());
@@ -18,6 +21,10 @@ public class HomePage extends BasePage {
         return DriverManager.get()
                 .getTitle()
                 .contains("Local Automation Lab");
+    }
+
+    public Header header() {
+        return header;
     }
 
 }
