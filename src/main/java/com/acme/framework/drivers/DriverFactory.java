@@ -20,7 +20,7 @@ public class DriverFactory {
         if (Config.headless()) {
             options.addArguments("--headless=new");
         }
-        options.addArguments("--window-size=1400, 980");
+        options.addArguments("--window-size=1400,980");
 
         return new ChromeDriver(options);
 

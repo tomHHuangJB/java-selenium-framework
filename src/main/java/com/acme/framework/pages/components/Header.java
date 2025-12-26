@@ -5,18 +5,10 @@ import org.openqa.selenium.By;
 
 public class Header extends BasePage {
 
-    private static final By MEGA_MENU_BUTTON =
-            By.xpath("//button[normalize-space()='Mega Menu']");
-
-    private static final By Forms_link =
-            By.cssSelector("a[href='/forms']");
-
-    public void openMenu() {
-        waits.untilClickable(MEGA_MENU_BUTTON).click();
-    }
+    private static final By FORMS_LINK =
+            By.cssSelector("[data-testid='nav-forms']");
 
     public void navigateToForms() {
-        openMenu();
-        waits.untilClickable(Forms_link).click();
+        waits.untilClickable(FORMS_LINK).click();
     }
 }

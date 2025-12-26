@@ -4,6 +4,7 @@ import com.acme.framework.config.Config;
 import com.acme.framework.drivers.DriverFactory;
 import com.acme.framework.core.DriverManager;
 
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
@@ -19,6 +20,7 @@ public abstract class BaseUiTest {
     @BeforeMethod(alwaysRun = true)
     public void setUP() {
         DriverManager.setDriver(DriverFactory.create());
+        DriverManager.getDriver().manage().window().setSize(new Dimension(1400, 980));
     }
 
     @AfterMethod(alwaysRun = true)
