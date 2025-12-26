@@ -1,10 +1,10 @@
 package com.acme.framework.pages;
 
-import com.acme.framework.components.Header;
+import com.acme.framework.pages.components.Header;
 import com.acme.framework.config.Config;
 import com.acme.framework.core.BasePage;
-import com.acme.framework.drivers.DriverManager;
-import org.openqa.selenium.By;
+import com.acme.framework.core.DriverManager;
+
 
 public class HomePage extends BasePage {
 
@@ -18,7 +18,7 @@ public class HomePage extends BasePage {
     }
 
     public boolean isLoaded() {
-        return DriverManager.get()
+        return DriverManager.getDriver()
                 .getTitle()
                 .contains("Local Automation Lab");
     }

@@ -1,9 +1,9 @@
-package com.acme.framework.components;
+package com.acme.framework.pages.components;
 
-import com.acme.framework.waits.Waiter;
+import com.acme.framework.core.BasePage;
 import org.openqa.selenium.By;
 
-public class Header {
+public class Header extends BasePage {
 
     private static final By MEGA_MENU_BUTTON =
             By.xpath("//button[normalize-space()='Mega Menu']");
@@ -12,11 +12,11 @@ public class Header {
             By.cssSelector("a[href='/forms']");
 
     public void openMenu() {
-        Waiter.clickable(MEGA_MENU_BUTTON).click();
+        waits.untilClickable(MEGA_MENU_BUTTON).click();
     }
 
     public void navigateToForms() {
         openMenu();
-        Waiter.clickable(Forms_link).click();
+        waits.untilClickable(Forms_link).click();
     }
 }

@@ -1,14 +1,14 @@
 package com.acme.framework.pages;
 
 import com.acme.framework.core.BasePage;
-import com.acme.framework.drivers.DriverManager;
-import org.openqa.selenium.By;
+import com.acme.framework.core.DriverManager;
+
 
 public class FormsPage extends BasePage {
 
 
     public boolean isLoaded() {
-        return DriverManager.get()
+        return DriverManager.getDriver()
                 .getCurrentUrl()
                 .endsWith("/forms");
     }

@@ -1,15 +1,15 @@
 package com.acme.tests.ui;
 
 import com.acme.framework.config.Config;
-import com.acme.framework.drivers.DriverManager;
 import com.acme.framework.drivers.DriverFactory;
+import com.acme.framework.core.DriverManager;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -18,7 +18,7 @@ public abstract class BaseUiTest {
 
     @BeforeMethod(alwaysRun = true)
     public void setUP() {
-        DriverManager.set(DriverFactory.create());
+        DriverManager.setDriver(DriverFactory.create());
     }
 
     @AfterMethod(alwaysRun = true)
@@ -31,7 +31,8 @@ public abstract class BaseUiTest {
         } catch ( Exception ignored) {
             // keep teardown resilient
         } finally {
-            DriverManager.quit();
+            DriverManager.getDriver().quit();
+            DriverManager.removeDriver();
         }
     }
 
@@ -40,7 +41,7 @@ public abstract class BaseUiTest {
     }
 
     private void takeScreenshot(String testName) throws Exception {
-        var driver = DriverManager.get();
+        var driver = DriverManager.getDriver();
         if (driver == null) return;
 
         byte[] png  = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);

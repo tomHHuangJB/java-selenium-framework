@@ -1,8 +1,9 @@
 package com.acme.tests.ui;
 
-import com.acme.framework.drivers.DriverManager;
 import com.acme.framework.pages.FormsPage;
 import com.acme.framework.pages.HomePage;
+import com.acme.tests.assertions.FormsAsserts;
+import com.acme.tests.assertions.HomePageAsserts;
 import org.assertj.core.api.Assertions;
 import org.testng.annotations.Test;
 
@@ -19,18 +20,21 @@ public class SmokeUiTest extends BaseUiTest {
 
         // with Page Object
         HomePage home = new HomePage().open();
-        Assertions.assertThat(home.isLoaded()).isTrue();
+        HomePageAsserts homePageAsserts = new HomePageAsserts();
+        homePageAsserts.assertHomePageLoaded(home);
     }
 
     @Test
     public void user_can_navigate_to_forms_page() {
         HomePage home = new HomePage().open();
-        Assertions.assertThat(home.isLoaded()).isTrue();
+        HomePageAsserts homePageAsserts = new HomePageAsserts();
+        FormsAsserts formsAsserts = new FormsAsserts();
+        homePageAsserts.assertHomePageLoaded(home);
 
         home.header().navigateToForms();
 
         FormsPage forms = new FormsPage();
-        Assertions.assertThat(forms.isLoaded()).isTrue();
+        formsAsserts.assertFormsPageLoaded(forms);
     }
 
 }
